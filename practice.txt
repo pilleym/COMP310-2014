@@ -1,0 +1,9 @@
+1. What do you really know about data structures:
+I don't have much previous knowledge for data structures. 
+I know it has to do with organizing data and finding the best option for certain applications.
+I'm hoping my previous course work will come in handy.
+
+2. Taking a brief look at the midterm, I don't know too many of the answers. 
+Some of the questions seems similar to Algorithm and Design course I had prevously taken. 
+By the end of the semester, I hope to be able to answer this questions with ease. 
+
