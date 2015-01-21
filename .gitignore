@@ -1,5 +1,7 @@
+**/*.class
 **/*.html
 **/bin
+**/bin/**
 **/build
 **/.settings
 **/.project
