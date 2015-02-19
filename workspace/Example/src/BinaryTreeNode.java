@@ -1,6 +1,5 @@
 
-public class BinaryTreeNode
-	<DataType extends Comparable<DataType>>
+public class BinaryTreeNode<DataType extends Comparable<DataType>>
 {
 	DataType data;
 	BinaryTreeNode<DataType> left, right;
@@ -57,5 +56,29 @@ public class BinaryTreeNode
 	
 	public static void main(String[] args) {
 		System.out.println("Hello".compareTo("World"));
+	}
+
+	@SuppressWarnings({ "unused" })
+	private BinaryTreeNode<DataType> remove(DataType x, BinaryTreeNode<DataType> t)
+	{
+		if (t == null)
+		{
+			return t;
+		}
+		
+		int compareResult = x.compareTo(t.data);
+		
+		if(compareResult < 0)
+		{
+			t.left = remove(x, t.left);
+		}
+		else if (compareResult > 0)
+		{
+			t.right = remove(x,t.right);
+		}
+		else
+			t = (t.left != null) ? t.left : t.right;
+			return t;
+			
 	}
 }
