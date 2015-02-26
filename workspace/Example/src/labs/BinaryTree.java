@@ -8,6 +8,10 @@ import java.util.Iterator;
  */
 public class BinaryTree<T extends Comparable<T>> implements Iterable<T> {
 	private ArrayList<T> elements;
+	public Object data;
+	//public BinaryTree<T> left1;
+	public BinaryTree<T> right;
+	public BinaryTree<T> left;
 	public BinaryTree() {
 		elements = new ArrayList<T>();
 	}
