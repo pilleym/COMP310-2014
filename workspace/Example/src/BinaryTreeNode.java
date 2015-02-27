@@ -1,3 +1,4 @@
+//binary search tree
 
 public class BinaryTreeNode<DataType extends Comparable<DataType>>
 {

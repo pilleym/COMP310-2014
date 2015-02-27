@@ -20,9 +20,9 @@ public class BinaryHeapTest {
 	@Test
 	public void testInsert() {
 		heap.insert(1000000);
-		assertEquals(1000000, (int)heap.remove());
-		assertEquals(10, (int)heap.remove());
-		assertEquals(5, (int)heap.remove());
+		assertEquals(1000000, (int)heap.remove(0));
+		assertEquals(10, (int)heap.remove(0));
+		assertEquals(5, (int)heap.remove(0));
 	}
 
 	@Test

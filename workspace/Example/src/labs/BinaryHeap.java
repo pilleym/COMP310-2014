@@ -1,84 +1,95 @@
 package labs;
 
-import java.awt.HeadlessException;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
 
-import javax.xml.soap.Node;
 
 // http://en.wikipedia.org/wiki/Binary_heap
 public class BinaryHeap<T extends Comparable<T>> {
 
 	BinaryTree<T> tree = new BinaryTree<T>();
-	public Node root;
+	private static final int d = 5;
+	private int size;
+	private int[] heaping;
 
-	public class Node<T>
-	{
-		private Node leftchild;
-		private Node rightChild;
-		public int object;
-		Node parent = null;
-		
-		public Node(int object)
-		{
-			this.object = object;
-		}
-	}
-	public void insert (int object){
-		Node node = new Node<>(object);
-		if (root == null)
-		{
-			root = node;
-			return;
-		}
-		insert2(root,node);
 
-				
-	}
 	
-	private void insert2(Node root2, Node node) {
+	public void insert(T item)
+	{
+		if(heapfull())
+		{
+			throw new NoSuchElementException("full");
+		}
+		
+		//heaping[size++];
+		heapifyup(size - 1);
+	}
+
+
+	private void heapifyup(int i) {
 		// TODO Auto-generated method stub
-		if(root2.object > node.object)
+		int temp = heaping[i];
+		while(i >0 && temp < heaping[parent(i)])
 		{
-			if(root2.leftchild == null)
-			{
-				root2.leftchild = node;
-				return;
-			}
-			else
-				root2.rightChild = node;
+			heaping[i] = heaping[parent(i)];
+			i = parent(i);
 		}
-		else 
-		{
-			if(root2.rightChild == null)
-			{
-				root2.rightChild = node;
-				return;
-			}
-			else
-				root2.leftchild = node;
-		}
+					
+					
 		
 	}
 
-	public Node remove(T item)
+
+	private int parent(int i) {
+		// TODO Auto-generated method stub
+		return (i - 1)/d;
+	}
+
+
+	public int remove(int item)
 	{
-		return root = remove(item);
+		if(heapempty())
+		{
+			throw new NoSuchElementException("no overflow");
+		}
+		int key = heaping[item];
+		heaping[item] = heaping[size  -1];
+		size--;
+		heapifyup(item);
+		return key;
 	}
 
 	// Does the heap have the item?
-	public void contains (T item) {
-		content(root);
-		System.out.println("");
-	}
-	public void content(Node Current)
-	{
-		if(Current == null)
-		{
-			return;
-		}
-		content(Current.leftchild);
-		content(Current.rightChild);
-		
-	}
+	public boolean contains (T item) {
+		return false;
 
+	}
+	public void heap(int cap)
+	{
+		size = 0;
+		heaping = new int[cap + 1];
+		Arrays.fill(heaping, -1);
+	}
+	public Boolean heapempty()
+	{
+		return size == 0;
+	}
+	public Boolean heapfull()
+	{
+		return size == heaping.length;
+	}
+	//children
+	private int childnum(int i, int k)
+	{
+		return d + i + k;
+	}
+	public int min()
+	{
+		if(heapempty())
+		{
+			throw new NoSuchElementException("no overflow");
+		}
+		return heaping[0];
+	}
 
 }
